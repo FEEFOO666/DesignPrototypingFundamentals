@@ -6,17 +6,17 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     private int highScore;
-    [HideInInspector] public int score;
+    [HideInInspector] public int kills;
     [HideInInspector] public float health;
     public float damageMultiplyer = 1.0f;
     public Text highScoreText;
-    public Text scoreText;
+    public Text killsText;
     public Text healthText;
 
     // Start is called before the first frame update
-    void Start()
+   void Start()
     {
-        highScore = PlayerPrefs.GetInt("HIGHSCORE");
+       highScore = PlayerPrefs.GetInt("KILLS");
         highScoreText.text = "High Score: " + highScore;
     }
 
@@ -25,14 +25,14 @@ public class LevelManager : MonoBehaviour
     {
 
         health = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDamage>().health;
-        scoreText.text = "Score: " + score;
+        killsText.text = "Kills:" + kills;
         healthText.text = "Health: " + health;
 
-        if(highScore < score)
+        if(highScore < kills)
         {
-            PlayerPrefs.SetInt("HIGHSCORE", score);
+            PlayerPrefs.SetInt("KILLS", kills);
             PlayerPrefs.Save();
-            highScore = score;
+            highScore = kills;
             highScoreText.text = "High Score: " + highScore;
         }
     }

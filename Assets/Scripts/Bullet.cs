@@ -27,7 +27,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            LevelManager.GetComponent<LevelManager>().score++;
+            LevelManager.GetComponent<LevelManager>().kills++;
             Instantiate(splatEffect, collision.transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
         }
