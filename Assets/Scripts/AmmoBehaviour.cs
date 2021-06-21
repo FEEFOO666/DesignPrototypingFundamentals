@@ -6,7 +6,7 @@ public class AmmoBehaviour : MonoBehaviour
 {
 
     [SerializeField]
-    private int ammoClip;
+    public int ammoClip;
     public int clipSize;
     public int ammoMax;
     public GameObject bulletPrefab;

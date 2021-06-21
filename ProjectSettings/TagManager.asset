@@ -9,6 +9,7 @@ TagManager:
   - Auto
   - ammoSmall
   - ammoBig
+  - Gun
   layers:
   - Default
   - TransparentFX
