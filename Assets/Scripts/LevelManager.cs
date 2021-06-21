@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public Text highScoreText;
     public Text killsText;
     public Text healthText;
+    public Text ammoCounter;
 
     // Start is called before the first frame update
    void Start()

@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class AmmoSpawner : MonoBehaviour
 {
-
-    public GameObject enemyPrefab;
+    public GameObject ammoPickUpBig;
     public float timeBetweenSpawns = 5.0f;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnEnemy", 1.0f, timeBetweenSpawns);
+        InvokeRepeating("SpawnBigAmmo", 1.0f, timeBetweenSpawns);
     }
 
     // Update is called once per frame
@@ -19,8 +18,8 @@ public class Spawner : MonoBehaviour
         
     }
 
-    void SpawnEnemy()
+    void SpawnBigAmmo()
 	{
-        Instantiate(enemyPrefab, transform.position, Quaternion.identity);       
+        Instantiate(ammoPickUpBig, transform.position, Quaternion.identity);
     }
 }
