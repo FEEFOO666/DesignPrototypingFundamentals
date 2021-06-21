@@ -38,9 +38,10 @@ public class AmmoBehaviour : MonoBehaviour
                 GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
             }
 
-            if(ammoMax == 0)
+            if(ammoMax <= 0)
             {
                 stopReload = true;
+                ammoMax = 0;
             }
             else
             {
@@ -64,6 +65,12 @@ public class AmmoBehaviour : MonoBehaviour
         if(other.CompareTag("ammoBig"))
         {
             ammoMax = ammoMax + ammoPickUpBig;
+            Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("ammoSmall"))
+        {
+            ammoMax = ammoMax + ammoPickUpSmall;
             Destroy(other.gameObject);
         }
     }
