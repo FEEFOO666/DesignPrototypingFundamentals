@@ -14,7 +14,8 @@ public class LevelManager : MonoBehaviour
     public Text highScoreText;
     public Text killsText;
     public Text healthText;
-    public Text ammoCounter;
+    public Text ammoMaxCounter;
+    public Text ammoClipCounter;
 
     // Start is called before the first frame update
    void Start()
@@ -41,6 +42,8 @@ public class LevelManager : MonoBehaviour
 
         ammoClip = GameObject.FindGameObjectWithTag("Gun").GetComponent<AmmoBehaviour>().ammoClip;
         ammoMax = GameObject.FindGameObjectWithTag("Gun").GetComponent<AmmoBehaviour>().ammoMax;
-        ammoCounter.text = ammoClip + "/" + ammoMax;
+
+        ammoMaxCounter.text =  "" + ammoMax; 
+        ammoClipCounter.text = "" + ammoClip;
     }
 }

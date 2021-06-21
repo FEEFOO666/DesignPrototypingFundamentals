@@ -35,7 +35,7 @@ public class AmmoBehaviour : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0) && ammoMax >= 0 && ammoClip != 0)
             {
                 ammoClip--;
-                GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
+                GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation); // Spawns the bullet prefab from the end of gun barrel and shoots it
             }
 
             if(ammoMax <= 0)
@@ -48,15 +48,15 @@ public class AmmoBehaviour : MonoBehaviour
                 stopReload = false;
             }
 
-            if (Input.GetKeyDown("r") && stopReload == false)
+            if (Input.GetKeyDown("r") && stopReload == false)  // This reloads the gun if there is spare ammo available
             {
                 ammoMax = ammoMax - clipSize;
                 ammoClip = clipSize;
                 reloadTime = 2;
-                //Debug.Log("Yay i just reloaded");
+                Debug.Log("Noice I just reloaded");
             }
         }
-        reloadTime -= Time.deltaTime; 
+        reloadTime -= Time.deltaTime; // This Stops the reload delay allowing the player to shoot again.
 
     }
 
