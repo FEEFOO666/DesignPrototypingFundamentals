@@ -32,7 +32,7 @@ public class AmmoBehaviour : MonoBehaviour
         if (reloadTime <= 0)
         {
 
-            if (Input.GetKeyDown(KeyCode.Mouse0) && ammoMax >= 0 && ammoClip != 0)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && ammoClip != 0)
             {
                 ammoClip--;
                 GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation); // Spawns the bullet prefab from the end of gun barrel and shoots it
@@ -49,7 +49,7 @@ public class AmmoBehaviour : MonoBehaviour
             }
 
             if (Input.GetKeyDown("r") && stopReload == false)  // This reloads the gun if there is spare ammo available
-            {
+            {           
                 ammoMax = ammoMax - clipSize;
                 ammoClip = clipSize;
                 reloadTime = 2;
@@ -62,13 +62,13 @@ public class AmmoBehaviour : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("ammoBig"))
+        if(other.CompareTag("ammoBig"))          // When the player collides with an object with this tag, it provides ammo to the player and is destroyed
         {
             ammoMax = ammoMax + ammoPickUpBig;
             Destroy(other.gameObject);
         }
 
-        if (other.CompareTag("ammoSmall"))
+        if (other.CompareTag("ammoSmall"))       // When the player collides with an object with this tag, it provides ammo to the player and is destroyed
         {
             ammoMax = ammoMax + ammoPickUpSmall;
             Destroy(other.gameObject);
