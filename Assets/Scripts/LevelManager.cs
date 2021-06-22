@@ -43,7 +43,26 @@ public class LevelManager : MonoBehaviour
         ammoClip = GameObject.FindGameObjectWithTag("Gun").GetComponent<AmmoBehaviour>().ammoClip;
         ammoMax = GameObject.FindGameObjectWithTag("Gun").GetComponent<AmmoBehaviour>().ammoMax;
 
-        ammoMaxCounter.text =  "" + ammoMax; 
+        ammoMaxCounter.text = "" + ammoMax; 
         ammoClipCounter.text = "" + ammoClip;
+
+        OnGUI();
     }
+
+    void OnGUI()
+    {
+        if (ammoClip == 0)
+        {
+            ammoClipCounter.color = Color.red;
+        }
+
+        else
+        {
+            ammoClipCounter.color = Color.black;
+        }
+
+    }
+        
+
+
 }
