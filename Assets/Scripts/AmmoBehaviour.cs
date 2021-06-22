@@ -12,6 +12,7 @@ public class AmmoBehaviour : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject bulletSpawnPoint;
     private float reloadTime;
+    private bool reloadBool;
     private bool stopReload;
 
     public int ammoPickUpSmall = 10;
@@ -38,7 +39,7 @@ public class AmmoBehaviour : MonoBehaviour
                 GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation); // Spawns the bullet prefab from the end of gun barrel and shoots it
             }
 
-            if(ammoMax <= 0)
+            if(ammoMax <= 0)      // Stops ammo count going into negative 
             {
                 stopReload = true;
                 ammoMax = 0;
@@ -49,14 +50,34 @@ public class AmmoBehaviour : MonoBehaviour
             }
 
             if (Input.GetKeyDown("r") && stopReload == false)  // This reloads the gun if there is spare ammo available
-            {           
-                ammoMax = ammoMax - clipSize;
-                ammoClip = clipSize;
+            {                  
                 reloadTime = 2;
-                Debug.Log("Noice I just reloaded");
+                reloadBool = true;
             }
         }
         reloadTime -= Time.deltaTime; // This Stops the reload delay allowing the player to shoot again.
+
+        if (reloadTime <= 0 && reloadBool == true)
+        {
+            int tempValue = ammoMax;
+            ammoMax = ammoMax - clipSize + ammoClip;
+            Debug.Log(ammoMax);
+            ammoClip = clipSize;
+            Debug.Log("Noice I just reloaded");
+            reloadBool = false;
+
+            if (tempValue < 10)
+            {
+                ammoClip = tempValue;
+            }
+
+            else
+            {
+                ammoClip = clipSize;
+            }
+        }
+
+      
 
     }
 

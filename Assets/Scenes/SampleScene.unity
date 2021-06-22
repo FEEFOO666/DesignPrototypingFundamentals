@@ -1994,9 +1994,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31edf78c4f6e87d4495deba8c1b7740c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoClip: 10
-  clipSize: 10
-  ammoMax: 10
+  ammoClip: 20
+  clipSize: 20
+  ammoMax: 100
   bulletPrefab: {fileID: 1750681780864933745, guid: 81b57b1b3fa9643d6ab65c6a4358e32f,
     type: 3}
   bulletSpawnPoint: {fileID: 1034444604}
@@ -4915,7 +4915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d188d7502aa3cd649b8cf82791f857e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 1000000
   timer: 5
   painEffect: {fileID: 533730454786828092, guid: 0adb5f4ce41aa4642b726fcf4f5c06f5,
     type: 3}
@@ -5325,7 +5325,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 202.9, y: 4.100006}
+  m_AnchoredPosition: {x: 202.90002, y: 4.0999756}
   m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1607891665
