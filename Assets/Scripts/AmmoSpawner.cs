@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class AmmoSpawner : MonoBehaviour
 {
-    public GameObject ammoPickUpBig;
+    public GameObject ammoPickUpSmall;
     public float timeBetweenSpawns = 5.0f;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnBigAmmo", 1.0f, timeBetweenSpawns);
+        InvokeRepeating("SpawnSmallAmmo", 1.0f, timeBetweenSpawns);
     }
 
     // Update is called once per frame
@@ -18,8 +18,8 @@ public class AmmoSpawner : MonoBehaviour
         
     }
 
-    void SpawnBigAmmo()
+    void SpawnSmallAmmo()
 	{
-        Instantiate(ammoPickUpBig, transform.position, Quaternion.identity);
+        Instantiate(ammoPickUpSmall, transform.position, Quaternion.identity);
     }
 }
