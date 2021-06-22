@@ -1996,7 +1996,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoClip: 20
   clipSize: 20
-  ammoMax: 100
+  ammoMax: 10
   bulletPrefab: {fileID: 1750681780864933745, guid: 81b57b1b3fa9643d6ab65c6a4358e32f,
     type: 3}
   bulletSpawnPoint: {fileID: 1034444604}

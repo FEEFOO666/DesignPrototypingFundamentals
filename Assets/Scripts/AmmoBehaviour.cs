@@ -14,6 +14,9 @@ public class AmmoBehaviour : MonoBehaviour
     private float reloadTime;
     private bool reloadBool;
     private bool stopReload;
+    private bool canFire;
+    private bool crtnActive;
+    private float coolDownTime = 0.5f;
 
     public int ammoPickUpSmall = 10;
     public int ammoPickUpBig = 25;
@@ -33,12 +36,29 @@ public class AmmoBehaviour : MonoBehaviour
         if (reloadTime <= 0)
         {
 
-            if (Input.GetKeyDown(KeyCode.Mouse0) && ammoClip != 0)
-            {
-                ammoClip--;
-                GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation); // Spawns the bullet prefab from the end of gun barrel and shoots it
-            }
 
+
+            if (Input.GetKey(KeyCode.Mouse0) && ammoClip != 0)
+            {
+                if (canFire)
+                {
+                    ammoClip--;
+                    GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation); // Spawns the bullet prefab from the end of gun barrel and shoots it
+                    canFire = false;
+                }
+
+                if(canFire == false)
+                {
+                    if(!crtnActive)
+                    {
+                        StartCoroutine(coolDown());
+
+                    }
+                }
+
+
+
+            }
             if(ammoMax <= 0)      // Stops ammo count going into negative 
             {
                 stopReload = true;
@@ -55,6 +75,14 @@ public class AmmoBehaviour : MonoBehaviour
                 reloadBool = true;
             }
         }
+
+
+
+
+
+
+
+
         reloadTime -= Time.deltaTime; // This Stops the reload delay allowing the player to shoot again.
 
         if (reloadTime <= 0 && reloadBool == true)
@@ -76,24 +104,31 @@ public class AmmoBehaviour : MonoBehaviour
                 ammoClip = clipSize;
             }
         }
-
-      
-
+    
     }
 
     public void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("ammoBig"))          // When the player collides with an object with this tag, it provides ammo to the player and is destroyed
         {
-            ammoMax = ammoMax + ammoPickUpBig;
+            ammoMax += ammoPickUpBig;
             Destroy(other.gameObject);
         }
 
         if (other.CompareTag("ammoSmall"))       // When the player collides with an object with this tag, it provides ammo to the player and is destroyed
         {
-            ammoMax = ammoMax + ammoPickUpSmall;
+            ammoMax += ammoPickUpSmall;
             Destroy(other.gameObject);
         }
     }
 
+
+    IEnumerator coolDown()
+    {
+        crtnActive = true;
+        yield return new WaitForSeconds(coolDownTime);
+        canFire = true;
+        crtnActive = false;
+
+    }
 }
