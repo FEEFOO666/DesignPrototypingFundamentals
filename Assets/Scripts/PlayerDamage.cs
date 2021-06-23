@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerDamage : MonoBehaviour
 {
     public float health = 100.0f;
+    public float maxHealth = 100.0f;
     public float timer = 0.0f;
     GameObject LevelManager;
     public GameObject painEffect;

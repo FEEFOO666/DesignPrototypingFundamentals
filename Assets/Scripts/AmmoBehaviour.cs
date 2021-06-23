@@ -16,7 +16,7 @@ public class AmmoBehaviour : MonoBehaviour
     private bool stopReload;
     private bool canFire;
     private bool crtnActive;
-    private float coolDownTime = 0.5f;
+    private float coolDownTime = 0.1f;
 
     public int ammoPickUpSmall = 10;
     public int ammoPickUpBig = 25;
@@ -56,8 +56,6 @@ public class AmmoBehaviour : MonoBehaviour
                     }
                 }
 
-
-
             }
             if(ammoMax <= 0)      // Stops ammo count going into negative 
             {
@@ -78,18 +76,12 @@ public class AmmoBehaviour : MonoBehaviour
 
 
 
-
-
-
-
-
         reloadTime -= Time.deltaTime; // This Stops the reload delay allowing the player to shoot again.
 
         if (reloadTime <= 0 && reloadBool == true)
         {
             int tempValue = ammoMax;
             ammoMax = ammoMax - clipSize + ammoClip;
-            Debug.Log(ammoMax);
             ammoClip = clipSize;
             Debug.Log("Noice I just reloaded");
             reloadBool = false;
@@ -122,8 +114,7 @@ public class AmmoBehaviour : MonoBehaviour
         }
     }
 
-
-    IEnumerator coolDown()
+    IEnumerator coolDown()                         // When this function is  called it starts the weapon cool down and resets the canFire to true allowing the player to shoot again
     {
         crtnActive = true;
         yield return new WaitForSeconds(coolDownTime);

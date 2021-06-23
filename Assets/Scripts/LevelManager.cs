@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour
     private int highScore;
     [HideInInspector] public int kills;
     [HideInInspector] public float health;
+    [HideInInspector] public float maxHealth;
+    [HideInInspector] public float healthSlider;
     [HideInInspector] public float ammoClip;
     [HideInInspector] public float ammoMax;
     public float damageMultiplyer = 1.0f;
@@ -27,7 +29,7 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        maxHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDamage>().maxHealth;
         health = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDamage>().health;
         killsText.text = "Kills:" + kills;
         healthText.text = "Health: " + health;
@@ -47,6 +49,8 @@ public class LevelManager : MonoBehaviour
         ammoClipCounter.text = "" + ammoClip;
 
         OnGUI();
+        HealthColour();
+
     }
 
     void OnGUI()
@@ -63,6 +67,25 @@ public class LevelManager : MonoBehaviour
 
     }
         
+    void HealthColour()
+    {
+
+        if (health <= maxHealth / 5)
+        {
+            healthText.color = Color.red;
+        }
+
+        else if (health <= maxHealth/2)
+        {
+            healthText.color = Color.yellow;
+        }
+
+        else
+        {
+            healthText.color = Color.green;
+        }
+
+    }
 
 
 }
